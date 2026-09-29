@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dormitory Management & Outing System (DMOS)</title>
+    <title>Dorm Outing System SMKK</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -43,10 +43,10 @@
                 <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-50 rounded-full mb-4 border border-blue-100 shadow-inner overflow-hidden p-2">
                     <img src="DOutSys_images/logosmkk.png" onerror="this.src='https://placehold.co/150x150/1e3a8a/ffffff?text=SMKK'" class="w-full h-full object-contain">
                 </div>
-                <h1 class="text-2xl font-bold text-slate-900">Dormitory Management & Outing System (DMOS)</h1>
-                <p class="text-sm font-medium text-primary mt-1">SMK KANOWIT (YEA3302)</p>
+                <h1 class="text-2xl font-bold text-slate-900">Dorm Outing System SMKK</h1>
+                <p class="text-sm font-medium text-primary mt-1">SMK KANOWIT (SMKK)</p>
                 <div id="modeBadge" class="inline-block mt-3 px-3 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                    <i class="fa-solid fa-circle-check mr-1"></i> MAIN DATABASE CONNECTED
+                    <i class="fa-solid fa-circle-check mr-1"></i> LIVE GOOGLE SHEETS CONNECTED
                 </div>
             </div>
 
@@ -92,7 +92,10 @@
                     <i class="fa-solid fa-gear"></i>
                     <span>Tetapan API</span>
                 </button>
-                
+                <a href="https://docs.google.com/spreadsheets/d/1URlaUvkO08rzhzSyzgIJrXRQ45V7aPKluUqbXLu2vss/edit?usp=sharing" target="_blank" class="text-xs text-emerald-600 hover:underline font-medium flex items-center space-x-1">
+                    <i class="fa-solid fa-table"></i>
+                    <span>Buka Google Sheets</span>
+                </a>
             </div>
         </div>
     </div>
@@ -107,7 +110,7 @@
                     <img src="DOutSys_images/logosmkk.png" onerror="this.src='https://placehold.co/150x150/1e3a8a/ffffff?text=SMKK'" class="w-full h-full object-contain">
                 </div>
                 <div>
-                    <h2 class="text-sm font-bold text-white tracking-wide">Dormitory Management & Outing System (DMOS)</h2>
+                    <h2 class="text-sm font-bold text-white tracking-wide">Dorm Outing SMKK</h2>
                     <p class="text-[10px] text-slate-400 font-medium uppercase">Asrama Pelajar</p>
                 </div>
             </div>
@@ -170,14 +173,14 @@
                     </button>
                     <div>
                         <h2 id="pageTitle" class="text-lg font-bold text-slate-800">Dashboard Utama</h2>
-                        <p class="text-xs text-slate-500 hidden sm:block">Dormitory Management & Outing System (DMOS)</p>
+                        <p class="text-xs text-slate-500 hidden sm:block">Dorm Outing System SMKK - SMK Kanowit</p>
                     </div>
                 </div>
 
                 <div class="flex items-center space-x-3">
                     <div id="liveSyncBadge" class="hidden sm:flex items-center space-x-1.5 px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium rounded-full">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span id="syncModeText">Live Database Sync</span>
+                        <span id="syncModeText">Live Google Sheets Sync</span>
                     </div>
 
                     <button onclick="fetchAllDataFromSheets()" title="Refresh Data" class="p-2.5 text-slate-600 hover:text-primary hover:bg-slate-100 rounded-xl transition flex items-center space-x-1 text-xs font-medium">
@@ -215,7 +218,8 @@
                             </div>
                         </div>
 
-                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between hover:shadow-md transition">
+                        <div class="px-2.5 py-1 text-[10px] font-bold rounded-full border bg-red-100 text-red-700 border-red-200 text-xs truncate max-w-[150px] px-2 py-1 rounded">
+                            
                             <div>
                                 <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Dalam Asrama</p>
                                 <h3 class="text-2xl font-extrabold text-incolor mt-1" id="statInHostel">0</h3>
@@ -226,7 +230,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between hover:shadow-md transition">
+                        <div class="px-2.5 py-1 text-[10px] font-bold rounded-full border bg-red-100 text-red-700 border-red-200 text-xs truncate max-w-[150px] px-2 py-1 rounded">
                             <div>
                                 <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Sedang Keluar</p>
                                 <h3 class="text-2xl font-extrabold text-outcolor mt-1" id="statOutside">0</h3>
@@ -378,7 +382,7 @@
                                     <option value="5 Dinamik">5 Dinamik</option>
                                     <option value="6 Erat">6 Erat</option>
                                 </select>
-                                <select id="studentStatusFilter" onchange="renderStudentsTable()" class="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <select id="studentStatusFilter" onchange="renderStudentsTable()" class="px-2.5 py-1 text-[10px] font-bold rounded-full border bg-red-100 text-red-700 border-red-200 text-xs truncate max-w-[150px] px-2 py-1 rounded">
                                     <option value="">Semua Status</option>
                                     <option value="IN">Dalam Asrama (IN)</option>
                                     <option value="OUT">Di Luar (OUT)</option>
@@ -407,30 +411,24 @@
                 <!-- TAB: MOVEMENT -->
                 <div id="tab-movement" class="space-y-6 tab-pane hidden">
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-                        <div class="pb-6 border-b border-slate-100">
-                            <h3 class="text-lg font-bold text-slate-900">Modul Rekod Keluar / Masuk Asrama</h3>
-                            <p class="text-xs text-slate-500">Cari pelajar untuk merekod pergerakan IN / OUT ke Google Sheets</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-                            <div class="space-y-4">
-                                <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Cari / Pilih Pelajar</label>
-                                <div class="relative">
-                                    <input type="text" id="movementSearchInput" oninput="searchMovementStudent()" placeholder="Taip Nama atau MyKad..." class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-                                </div>
-                                <div id="movementStudentSearchResults" class="max-h-60 overflow-y-auto space-y-2 border border-slate-200 rounded-xl p-2 bg-slate-50">
-                                    <p class="text-xs text-slate-400 text-center py-4">Sila masukkan nama atau MyKad pelajar</p>
-                                </div>
-                            </div>
-
-                            <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between">
-                                <div id="movementSelectedDetails">
-                                    <div class="text-center py-12 text-slate-400">
-                                        <i class="fa-solid fa-address-card text-4xl mb-3"></i>
-                                        <p class="text-sm font-medium">Tiada pelajar dipilih.</p>
-                                        <p class="text-xs text-slate-400 mt-1">Sila cari dan pilih pelajar di sebelah kiri untuk membuat rekod pergerakan.</p>
-                                    </div>
-                                </div>
+                        <div class="mt-8 pt-6 border-t border-slate-200">
+                            <h4 class="text-sm font-bold text-slate-800 mb-4 flex items-center space-x-2">
+                                <i class="fa-solid fa-table-list text-primary"></i>
+                                <span>Senarai Rekod Keluar / Masuk (Tab Laporan)</span>
+                            </h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse text-sm">
+                                    <thead>
+                                        <tr class="bg-slate-50 text-slate-600 text-xs font-semibold uppercase tracking-wider">
+                                            <th class="py-3 px-4 rounded-l-lg">Nama Pelajar</th>
+                                            <th class="py-3 px-4">Kelas</th>
+                                            <th class="py-3 px-4">Tarikh & Masa</th>
+                                            <th class="py-3 px-4">Status</th>
+                                            <th class="py-3 px-4 text-right rounded-r-lg">Catatan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="movementTabTableBody" class="divide-y divide-slate-100"></tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -895,7 +893,7 @@
 
             if (tabId === 'dashboard') loadDashboardData();
             if (tabId === 'students') renderStudentsTable();
-            if (tabId === 'movement') initMovementModule();
+            if (tabId === 'movement') { initMovementModule(); renderMovementTable(); }
             if (tabId === 'applications') renderApplicationsTable('Semua');
             if (tabId === 'discipline') renderDisciplineTable();
             if (tabId === 'wardens') renderWardensGrid();
@@ -1022,7 +1020,7 @@
             const container = document.getElementById('dutyWardenContainer');
             if (!container) return;
             const dutyToday = appData.duty[0] || { namawarden: "Cikgu Duli Ninti", tarikhmula: "2026-10-12", tarihkhtamat: "2026-10-18" };
-            let wardenName = dutyToday.namawarden || dutyToday.nama || "Cikgu Duli Ninti";
+            let wardenName = dutyToday.namawarden || dutyToday.name || "Cikgu Duli Ninti";
             let wardenObj = appData.wardens.find(w => (w.nama || w.name || "").toLowerCase() === wardenName.toLowerCase()) || appData.wardens[0] || { nama: wardenName, role: 'Warden', notelefon: '013-8887766', image: 'https://placehold.co/150x150/1e3a8a/ffffff?text=Warden' };
 
             container.innerHTML = `
@@ -1175,7 +1173,7 @@
                 let simg = s.gambar || s.image || 'https://placehold.co/150x150/1e3a8a/ffffff?text=User';
 
                 let st = statusMap[sid] ? statusMap[sid].status : 'IN';
-                let badgeClass = st === 'IN' ? 'bg-green-100 text-green-700 border-green-200 text-xs truncate max-w-[150px] px-2 py-1 rounded' : 'bg-red-100 text-red-700 border-red-200 text-xs truncate max-w-[150px] px-2 py-1 rounded';
+                let badgeClass = st === 'IN' ? 'bg-green-100 text-green-700 border-green-200' : 'bg-red-100 text-red-700 border-red-200';
                 let badgeText = st === 'IN' ? 'DALAM ASRAMA' : 'SEDANG KELUAR';
 
                 let tr = document.createElement('tr');
@@ -1256,168 +1254,63 @@
         }
 
         function initMovementModule() {
-            document.getElementById('movementSearchInput').value = '';
-            document.getElementById('movementStudentSearchResults').innerHTML = `<p class="text-xs text-slate-400 text-center py-4">Sila masukkan nama atau MyKad pelajar</p>`;
-            document.getElementById('movementSelectedDetails').innerHTML = `
-                <div class="text-center py-12 text-slate-400">
-                    <i class="fa-solid fa-address-card text-4xl mb-3"></i>
-                    <p class="text-sm font-medium">Tiada pelajar dipilih.</p>
-                    <p class="text-xs text-slate-400 mt-1">Sila cari dan pilih pelajar di sebelah kiri untuk merekod pergerakan.</p>
-                </div>
-            `;
-        }
-
-        function searchMovementStudent() {
-            const query = document.getElementById('movementSearchInput')?.value.toLowerCase() || '';
-            const container = document.getElementById('movementStudentSearchResults');
-            if (!container) return;
-            container.innerHTML = '';
-
-            if (!query) {
-                container.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">Sila masukkan nama atau MyKad pelajar</p>`;
-                return;
+            const searchInput = document.getElementById('movementSearchInput');
+            if (searchInput) searchInput.value = '';
+            
+            const searchResults = document.getElementById('movementStudentSearchResults');
+            if (searchResults) {
+                searchResults.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">Sila masukkan nama atau MyKad pelajar</p>`;
             }
 
-            let results = appData.students.filter(s => {
-                let name = (s.namapenuh || s.name || s.namapelajar || '').toLowerCase();
-                let id = (s.mykad || s.nomykad || s.id || '').toLowerCase();
-                return name.includes(query) || id.includes(query);
-            });
-
-            if (results.length === 0) {
-                container.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">Pelajar tidak dijumpai.</p>`;
-                return;
-            }
-
-            results.forEach(s => {
-                let sid = s.mykad || s.nomykad || s.id;
-                let sname = s.namapenuh || s.name || s.namapelajar;
-                let sclass = s.kelas || s.class;
-                let div = document.createElement('div');
-                div.className = "p-3 bg-white hover:bg-blue-50 cursor-pointer rounded-xl border border-slate-200 transition flex items-center space-x-3";
-                div.onclick = () => selectStudentForMovement(sid);
-                div.innerHTML = `
-                    <img src="${s.gambar || s.image || 'https://placehold.co/150x150/1e3a8a/ffffff?text=User'}" class="w-9 h-9 rounded-lg object-cover shrink-0">
-                    <div class="overflow-hidden">
-                        <p class="text-xs font-bold text-slate-800 truncate">${sname}</p>
-                        <p class="text-[10px] text-slate-500">${sclass} | ${sid}</p>
+            const selectedDetails = document.getElementById('movementSelectedDetails');
+            if (selectedDetails) {
+                selectedDetails.innerHTML = `
+                    <div class="text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-address-card text-4xl mb-3"></i>
+                        <p class="text-sm font-medium">Tiada pelajar dipilih.</p>
+                        <p class="text-xs text-slate-400 mt-1">Sila cari dan pilih pelajar untuk merekod pergerakan.</p>
                     </div>
                 `;
-                container.appendChild(div);
-            });
-        }
-
-        function selectStudentForMovement(studentId) {
-            const s = appData.students.find(st => (st.mykad || st.nomykad || st.id) === studentId);
-            if (!s) return;
-            const statusMap = getLatestStudentStatuses();
-            let st = statusMap[studentId] ? statusMap[studentId].status : 'IN';
-            let badgeClass = st === 'IN' ? 'bg-green-100 text-green-700 border-green-200 text-xs truncate max-w-[150px] px-2 py-1 rounded' : 'bg-red-100 text-red-700 border-green-200 text-xs truncate max-w-[150px] px-2 py-1 rounded';
-            let badgeText = st === 'IN' ? 'DALAM ASRAMA (IN)' : 'DI LUAR (OUT)';
-
-            let sname = s.namapenuh || s.name || s.namapelajar;
-            let sclass = s.kelas || s.class;
-            let sroom = s.bilikasrama || s.bilik || '-';
-            let simg = s.gambar || s.image || 'https://placehold.co/150x150/1e3a8a/ffffff?text=User';
-
-            document.getElementById('movementSelectedDetails').innerHTML = `
-                <div class="flex items-center space-x-4 mb-6">
-                    <img src="${simg}" class="w-20 h-20 rounded-2xl object-cover border-2 border-white shadow">
-                    <div>
-                        <span class="inline-block px-3 py-1 text-xs font-bold rounded-full border ${badgeClass} mb-1">${badgeText}</span>
-                        <h3 class="text-lg font-bold text-slate-900">${sname}</h3>
-                        <p class="text-xs text-slate-500">Kelas: ${sclass} | Bilik: ${sroom}</p>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">Catatan / Sebab Pergerakan</label>
-                        <input type="text" id="movementNoteInput" placeholder="Cth: Pulang ke rumah / Balik bermalam" class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-                    </div>
-                    <div class="flex space-x-4 pt-2">
-                        <button onclick="recordMovement('${studentId}', 'OUT')" class="flex-1 py-3 bg-outcolor hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-person-walking-arrow-right"></i>
-                            <span>REKOD KELUAR (OUT)</span>
-                        </button>
-                        <button onclick="recordMovement('${studentId}', 'IN')" class="flex-1 py-3 bg-incolor hover:bg-green-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-house-chimney"></i>
-                            <span>REKOD MASUK (IN)</span>
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        async function recordMovement(studentId, status) {
-            const s = appData.students.find(st => (st.mykad || st.nomykad || st.id) === studentId);
-            const note = document.getElementById('movementNoteInput')?.value.trim() || (status === 'OUT' ? 'Keluar asrama' : 'Masuk asrama');
-            const now = new Date();
-            let sname = s.namapenuh || s.name || s.namapelajar;
-            let sclass = s.kelas || s.class;
-
-            const record = {
-                action: 'addMovement',
-                id: 'M' + (appData.movement.length + 101),
-                mykad: studentId,
-                nama: sname,
-                kelas: sclass,
-                tarikh: now.toISOString().split('T')[0],
-                status: status,
-                masa: now.toTimeString().substring(0, 5),
-                image: s.gambar || s.image || '',
-                catatan: note
-            };
-
-            appData.movement.unshift(record);
-            showToast(`Berjaya merekod ${status} untuk ${sname}!`, 'success');
-            initMovementModule();
-            loadDashboardData();
-
-            if (gasUrl) {
-                try {
-                    await fetch(gasUrl, { method: 'POST', body: JSON.stringify(record) });
-                } catch (err) {
-                    console.error('Gagal menghantar ke Google Sheets:', err);
-                }
             }
+            renderMovementTable();
         }
 
-        function renderApplicationsTable(filterStatus) {
-            const tbody = document.getElementById('applicationsTableBody');
+        function renderMovementTable() {
+            const tbody = document.getElementById('movementTabTableBody');
             if (!tbody) return;
             tbody.innerHTML = '';
 
-            let filtered = appData.applications.filter(a => filterStatus === 'Semua' || (a.status || '').toLowerCase() === filterStatus.toLowerCase());
+            const search = document.getElementById('movementTableSearch')?.value.toLowerCase() || '';
+            let filtered = appData.movement.filter(m => {
+                let name = (m.nama || m.name || '').toLowerCase();
+                let cls = (m.kelas || m.class || '').toLowerCase();
+                return name.includes(search) || cls.includes(search);
+            });
+
             if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400 text-xs">Tiada permohonan dijumpai.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-400 text-xs">Tiada rekod pergerakan dijumpai.</td></tr>`;
                 return;
             }
 
-            filtered.forEach(a => {
-                let st = a.status || 'Dalam proses';
-                let badgeClass = st.toLowerCase() === 'diluluskan' ? 'bg-green-100 text-green-700 border-green-200' : (st.toLowerCase() === 'ditolak' ? 'bg-red-100 text-red-700 border-red-200' : 'bg-amber-100 text-amber-700 border-amber-200');
-                
-                let aname = a.nama || a.name || a.namapelajar;
-                let aclass = a.kelas || a.class;
-                let adate = a.tarikhpermohonan || a.tarikh || a.date;
-                let areason = a.sebab || a.reason;
-                let aapprover = a.pelulus || a.approver || '-';
+            filtered.forEach(m => {
+                let mname = m.nama || m.name || '-';
+                let mclass = m.kelas || m.class || '-';
+                let mdate = m.tarikh || m.date || '';
+                let mtime = m.masa || m.time || '';
+                let mstatus = (m.status || 'IN').toUpperCase();
+                let mnote = m.catatan || m.note || '-';
+
+                let badgeClass = mstatus === 'IN' ? 'bg-green-100 text-green-700 border-green-200' : 'bg-red-100 text-red-700 border-red-200';
+                let badgeText = mstatus === 'IN' ? 'DALAM ASRAMA (IN)' : 'DI LUAR (OUT)';
 
                 let tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50 transition";
                 tr.innerHTML = `
-                    <td class="py-3 px-4">
-                        <span class="block font-bold text-slate-800 text-sm">${aname}</span>
-                        <span class="text-xs text-slate-500">${aclass}</span>
-                    </td>
-                    <td class="py-3 px-4 text-xs text-slate-600">${adate}</td>
-                    <td class="py-3 px-4 text-xs text-slate-700">${areason}</td>
-                    <td class="py-3 px-4 text-xs text-slate-600">${aapprover}</td>
-                    <td class="py-3 px-4"><span class="px-2.5 py-1 text-[10px] font-bold rounded-full border ${badgeClass}">${st}</span></td>
-                    <td class="py-3 px-4 text-right space-x-1">
-                        <button onclick="updateAppStatus('${a.id}', 'Diluluskan')" class="px-2.5 py-1 bg-green-50 text-green-700 hover:bg-green-100 rounded-lg text-xs font-semibold transition">Lulus</button>
-                        <button onclick="updateAppStatus('${a.id}', 'Ditolak')" class="px-2.5 py-1 bg-red-50 text-red-700 hover:bg-red-100 rounded-lg text-xs font-semibold transition">Tolak</button>
-                    </td>
+                    <td class="py-3 px-4 font-bold text-slate-800 text-sm">${mname}</td>
+                    <td class="py-3 px-4 text-xs text-slate-600">${mclass}</td>
+                    <td class="py-3 px-4 text-xs text-slate-600">${mdate} ${mtime}</td>
+                    <td class="py-3 px-4"><span class="px-2.5 py-1 text-[10px] font-bold rounded-full border ${badgeClass}">${badgeText}</span></td>
+                    <td class="py-3 px-4 text-right text-xs text-slate-500">${mnote}</td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -1565,8 +1458,8 @@
             tbody.innerHTML = '';
             appData.duty.forEach(d => {
                 let dname = d.namawarden || d.name || d.namawarden;
-                let dstart = d.tarikhmula || d.start || d['Tarikh Mula'];
-                let dend = d.tarihkhtamat || d.end || d['Tarikh Tamat'];
+                let dstart = d.tarikhmula || d.start;
+                let dend = d.tarihkhtamat || d.end;
                 let dstatus = d.status || 'Aktif';
 
                 let tr = document.createElement('tr');
