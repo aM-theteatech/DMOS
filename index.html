@@ -1320,6 +1320,58 @@
             renderApplicationsTable(status);
         }
 
+        function renderApplicationsTable(filterStatus = 'Semua') {
+            const tbody = document.getElementById('applicationsTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            let filtered = appData.applications.filter(a => {
+                let st = (a.status || a.Status || 'Dalam proses').trim();
+                if (filterStatus === 'Semua') return true;
+                return st.toLowerCase() === filterStatus.toLowerCase();
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400 text-xs">Tiada permohonan keluar dijumpai.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(app => {
+                let aid = app.id || app.ID || '-';
+                let aname = app.nama || app.Name || app.name || '-';
+                let aclass = app.kelas || app.Class || app.class || '-';
+                let adate = app.tarikhpermohonan || app.TarikhPermohonan || app.date || '-';
+                let areason = app.sebab || app.Reason || app.reason || '-';
+                let aapprover = app.pelulus || app.Approver || '-';
+                let astatus = app.status || app.Status || 'Dalam proses';
+
+                let badgeColor = 'bg-amber-100 text-amber-800 border-amber-200';
+                if (astatus.toLowerCase() === 'diluluskan') badgeColor = 'bg-emerald-100 text-emerald-800 border-emerald-200';
+                else if (astatus.toLowerCase() === 'ditolak') badgeColor = 'bg-red-100 text-red-800 border-red-200';
+                else if (astatus.toLowerCase() === 'selesai') badgeColor = 'bg-blue-100 text-blue-800 border-blue-200';
+
+                let tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition";
+                tr.innerHTML = `
+                    <td class="py-3 px-4 flex items-center space-x-3">
+                        <div>
+                            <span class="block font-bold text-slate-900 text-sm">${aname}</span>
+                            <span class="text-xs text-slate-500">${aclass}</span>
+                        </div>
+                    </td>
+                    <td class="py-3 px-4 text-xs text-slate-600">${adate}</td>
+                    <td class="py-3 px-4 text-xs text-slate-700 font-medium">${areason}</td>
+                    <td class="py-3 px-4 text-xs text-slate-600">${aapprover}</td>
+                    <td class="py-3 px-4"><span class="px-2.5 py-1 text-[10px] font-bold rounded-full border ${badgeColor}">${astatus}</span></td>
+                    <td class="py-3 px-4 text-right space-x-1">
+                        <button onclick="updateAppStatus('${aid}', 'Diluluskan')" class="px-2.5 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg text-xs font-semibold transition">Lulus</button>
+                        <button onclick="updateAppStatus('${aid}', 'Ditolak')" class="px-2.5 py-1 bg-red-50 text-red-700 hover:bg-red-100 rounded-lg text-xs font-semibold transition">Tolak</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
         async function updateAppStatus(appId, newStatus) {
             let app = appData.applications.find(a => a.id === appId);
             if (app) {
