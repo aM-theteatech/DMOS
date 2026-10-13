@@ -1509,9 +1509,9 @@
             if (!tbody) return;
             tbody.innerHTML = '';
             appData.duty.forEach(d => {
-                let dname = d.namawarden || d.name || d.namawarden;
+                let dname = d.namawarden || d.nama || d.namawarden;
                 let dstart = d.tarikhmula || d.start;
-                let dend = d.tarihkhtamat || d.end;
+                let dend = d.tarikhtamat || d.end;
                 let dstatus = d.status || 'Aktif';
 
                 let tr = document.createElement('tr');
