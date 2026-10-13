@@ -1518,9 +1518,9 @@
                 tr.className = "hover:bg-slate-50 transition";
                 tr.innerHTML = `
                     <td class="py-3 px-4 text-xs font-mono text-slate-600">${d.id || 'D01'}</td>
-                    <td class="py-3 px-4 text-xs font-bold text-slate-800">${dname}</td>
+                    <td class="py-3 px-4 text-xs font-bold text-slate-800">${d.nama}</td>
                     <td class="py-3 px-4 text-xs text-slate-600">${new Date(dstart).toLocaleDateString()}</td>
-                    <td class="py-3 px-4 text-xs text-slate-600">${new Date(dend).toLocaleDateString()}</td>
+                    <td class="py-3 px-4 text-xs text-slate-600">${new Date(d.tarikhtamat).toLocaleDateString()}</td>
                     <td class="py-3 px-4 text-right"><span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-blue-100 text-blue-700 border border-blue-200">${dstatus}</span></td>
                 `;
                 tbody.appendChild(tr);
